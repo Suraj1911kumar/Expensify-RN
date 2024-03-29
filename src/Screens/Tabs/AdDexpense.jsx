@@ -94,7 +94,7 @@ const AdDexpense = () => {
               onChange={onChangeDate}
               maximumDate={new Date()}
               is24Hour="true"
-              value={curDate}
+              value={new Date()}
             />
           )}
         </View>

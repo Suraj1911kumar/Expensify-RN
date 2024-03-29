@@ -26,6 +26,7 @@ const SignIn = () => {
             placeholder={"Password"}
             eye={true}
             value={password}
+            secureField={true}
             onChange={setPassword}
           />
         </View>

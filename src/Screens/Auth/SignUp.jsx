@@ -34,6 +34,7 @@ const SignUp = () => {
             eye={true}
             value={password}
             onChange={setPassword}
+            secureField={true}
           />
           <View className="flex flex-row  items-center  space-x-3 ">
             <View
