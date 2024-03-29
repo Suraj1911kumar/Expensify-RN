@@ -5,16 +5,18 @@ import {
   Button,
   Pressable,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import React, { useEffect, useRef } from "react";
 import { BellIcon, PlusIcon } from "react-native-heroicons/solid";
 import { violet } from "../../Constants/Color";
 import { useNavigation } from "@react-navigation/native";
+import Home_PieChart from "../../components/Home_PieChart";
 
 const Home = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const handleChange = () => {
-    navigation.navigate('addexp')
+    navigation.navigate("addexp");
   };
 
   return (
@@ -40,6 +42,9 @@ const Home = () => {
         <View>
           <BellIcon size={30} color={"grey"} />
         </View>
+      </View>
+      <View className="h-screen">
+        <Home_PieChart />
       </View>
     </View>
   );

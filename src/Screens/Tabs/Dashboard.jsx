@@ -10,6 +10,8 @@ const Dashboard = () => {
   const [todayDate, setTodayDate] = useState([]);
   const [curMonth, setCurMonth] = useState("");
 
+  const [cost, setCost] = useState([]);
+
   useEffect(() => {
     getApi();
   }, [getApi]);
@@ -29,7 +31,22 @@ const Dashboard = () => {
       "https://expense-server-5jxm.onrender.com/expenses"
     );
     const result = await response.data;
+
+    // console.warn(price);
+    // console.warn(result);
     setAllExpenses(result);
+    todayCost(result);
+  };
+
+  const todayCost = (result) => {
+    let price = 0;
+
+    result.forEach(function (item) {
+      if (item.hasOwnProperty("amount")) {
+        price = price + parseFloat(item.amount) || [];
+        setCost(price);
+      }
+    });
   };
 
   const getNeDate = (today) => {
@@ -100,6 +117,10 @@ const Dashboard = () => {
 
       <View className="flex-1">
         <Text>{data}</Text>
+        <View className="flex flex-row items-center justify-between my-2 ">
+          <Text>Total Expenses : {allExpenses.length}</Text>
+          <Text>Total Cost : {cost} </Text>
+        </View>
         <ScrollView
           className=" h-auto p-2 "
           scrollX
@@ -118,6 +139,7 @@ const Dashboard = () => {
                 <View>
                   <Text>Quantity : {i.quantity}</Text>
                   <Text>Price : {i.amount}</Text>
+
                   <Text>{i.createdDate}</Text>
                 </View>
               </View>
